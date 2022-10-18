@@ -28,11 +28,6 @@ node_modules/*
 !node_modules/@keystonejs
 node_modules/@keystonejs/*
 !node_modules/@keystonejs/app-admin-ui
-node_modules/@keystonejs/app-admin-ui/*
-!node_modules/@keystonejs/app-admin-ui/client
-node_modules/@keystonejs/app-admin-ui/client/*
-!node_modules/@keystonejs/app-admin-ui/client/components
-!node_modules/@keystonejs/app-admin-ui/client/pages
 
 jsConfigs0.js
 /dbbak
