@@ -4,7 +4,7 @@ const DB_NAME = "letsgocms"
 const setting = {
   env: "localhost",
   domain: process.env.DOMAIN || "http://localhost:3000",
-  appName: "Let's GO CREDIT",
+  appName: "LET's GO CREDIT",
   cookieSecret:
     "u#G9vmhTw2EDm8_=+NZ=G+7#KjzUsu2-Dz-G5ybhdCNLj#@vfG2gjtX7pY@7afw$Dk&d4DDEsCv__dr+QZaV$8nY&AmekRexy%ZLaaFwumzMz_mqwgM^^5!Fm+8KV_-m",
   dbName: DB_NAME,
@@ -28,28 +28,29 @@ const setting = {
 const developmentSetting = {
   ...setting,
   env: "development",
-  domain: "http://34.81.228.6/",
+  domain: "http://35.221.197.174/",
 }
 
 const betaSetting = {
   ...setting,
   env: "beta",
   dev: false,
-  domain: "http://34.81.228.6/",
+  domain: "http://35.221.197.174/",
 }
 
 const uatSetting = {
   ...setting,
   env: "uat",
   dev: false,
-  domain: "http://34.81.228.6/",
+  domain: "http://35.221.197.174/",
 }
 
 const productionSetting = {
   ...setting,
   env: "production",
   dev: false,
-  domain: "https://backend.rmloan.com.hk/",
+  domain: "http://35.221.197.174/",
+  // domain: "https://backend.rmloan.com.hk/",
 }
 
 let config

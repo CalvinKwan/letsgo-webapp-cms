@@ -46,15 +46,60 @@ const beforeChangeFile = async ({ existingItem }) => {
   }
 }
 
-module.exports = (keystone) => {
-  const section = [
-    { value: "application", label: "立即申請" },
-    { value: "valuation", label: "物業估價" },
-    { value: "aboutus", label: "關於我們" },
-    { value: "loanService", label: "貸款服務" },
-    { value: "loanProcess", label: "貸款步驟" },
-    { value: "richMore", label: "為何選擇我們" },
+module.exports = (keystone) => { 
+
+
+  const section = [      
+    { value: "Features", label: "產品特點" },    
+    { value: "LoanProduct", label: "貸款產品" },    
+    { value: "AboutUs", label: "關於我們" },    
+    { value: "CrediteRating", label: "信貸評級" },
+    { value: "QA", label: "常見問題" },    
+    { value: "Login", label: "登入" },    
+    { value: "Application", label: "立即申請" },    
   ]
+
+  const pageList = [      
+    { value: "Menu", label: "首頁" },    
+    { value: "LoanProduct", label: "貸款產品" },    
+    { value: "CrediteRating", label: "信貸評級" },
+    { value: "AboutUs", label: "關於我們" },    
+    { value: "QA", label: "常見問題" },    
+    { value: "Login", label: "登入" },
+    { value: "Application", label: "立即申請" },
+  ]
+
+  const menuList = [      
+    { value: "main", label: "主要" },    
+    { value: "loanProduct", label: "貸款產品" },    
+    
+  ]
+
+  keystone.createList("Menu", {
+    labelField: "Main Menu",
+    labelResolver: (i) => i.label,
+    fields: {
+      label: { type: Text },
+      url:{type:Text},
+      section: { type: Select, options: menuList },                   
+      ordering: {
+        type: Integer,
+        default: 1,
+      },
+    },
+    // List-level access controls
+    access: {
+      read: access.userIsAdminOrOwner,
+      update: access.userIsAdminOrOwner,
+      create: access.userIsAdmin,
+      delete: access.userIsAdmin,
+      auth: true,
+    },
+    adminConfig: {
+      defaultColumns: "label, ordering",
+    },
+  })
+
   keystone.createList("ApplicationSubmission", {
     labelField: "Application Submission",
     labelResolver: (i) => i.name,
@@ -122,44 +167,19 @@ module.exports = (keystone) => {
       auth: true,
     },
   })
-  keystone.createList("Block", {
-    labelField: "Content Block",
-    labelResolver: (i) => i.title,
-    fields: {
-      title: { type: Text, isMultiline: true },
-      description: { type: Text, isMultiline: true },
-      metaTitle: { type: Text, isMultiline: true  },
-      metaDescription: { type: Text, isMultiline: true  },
-      metaKeywords: { type: Text, isMultiline: true  },
-      section: { type: Select, options: section },
-      ordering: {
-        type: Integer,
-        default: 1,
-      },
-    },
-    adminConfig: {
-      defaultColumns: "title, section, ordering",
-    },
-    // List-level access controls
-    access: {
-      read: access.userIsAdminOrOwner,
-      update: access.userIsAdminOrOwner,
-      create: access.userIsAdmin,
-      delete: access.userIsAdmin,
-      auth: true,
-    },
-  })
 
-  keystone.createList("LoanServicePage", {
-    labelField: "Loan Service",
+  keystone.createList("ValuationCalculaton", {
+    labelField: "Valuation Calculaton",
     labelResolver: (i) => i.label,
-    fields: {
-      label: { type: Text },
-      description: { type: Text, isMultiline: true },
+    fields: {      
+      label: { type: Text},                        
       ordering: {
         type: Integer,
         default: 1,
       },
+    },
+    adminConfig: {
+      defaultColumns: "label,ordering",
     },
     // List-level access controls
     access: {
@@ -169,20 +189,45 @@ module.exports = (keystone) => {
       delete: access.userIsAdmin,
       auth: true,
     },
+  })
+
+ 
+
+  keystone.createList("ContentBlock", {
+    labelField: "Content Block",
+    labelResolver: (i) => i.label,
+    fields: {      
+      label: { type: Text},
+      description: { type: Text, isMultiline: true },     
+      section: { type: Select, options: section },                   
+      ordering: {
+        type: Integer,
+        default: 1,
+      },
+    },
     adminConfig: {
-      defaultColumns: "label, description, ordering",
+      defaultColumns: "label,description,ordering",
+    },
+    // List-level access controls
+    access: {
+      read: access.userIsAdminOrOwner,
+      update: access.userIsAdminOrOwner,
+      create: access.userIsAdmin,
+      delete: access.userIsAdmin,
+      auth: true,
     },
   })
 
-  keystone.createList("MT", {
+  keystone.createList("mt", {
     labelField: "Meta Data",
     labelResolver: (i) => i.title,
     fields: {
-      title: { type: Text  },
+      label: { type: Text  },
       description: { type: Text, isMultiline: true },
       metaTitle: { type: Text, isMultiline: true  },
       metaDescription: { type: Text, isMultiline: true  },
       metaKeywords: { type: Text, isMultiline: true  },
+      section: { type: Select, options: pageList },                   
       ordering: {
         type: Integer,
         default: 1,
@@ -201,29 +246,7 @@ module.exports = (keystone) => {
     },
   })
 
-  keystone.createList("Card", {
-    labelField: "Richmore Content Card",
-    labelResolver: (i) => i.label,
-    fields: {
-      label: { type: Text },
-      description: { type: Text },
-      ordering: {
-        type: Integer,
-        default: 1,
-      },
-    },
-    // List-level access controls
-    access: {
-      read: access.userIsAdminOrOwner,
-      update: access.userIsAdminOrOwner,
-      create: access.userIsAdmin,
-      delete: access.userIsAdmin,
-      auth: true,
-    },
-    adminConfig: {
-      defaultColumns: "label, ordering",
-    },
-  })
+
   keystone.createList("Post", {
     labelResolver: (i) => i.title,
     fields: {
@@ -284,26 +307,7 @@ module.exports = (keystone) => {
       defaultColumns: "key, remark, value",
     },
   })
-  keystone.createList("Menu", {
-    fields: {
-      label: { type: Text },
-      ordering: {
-        type: Integer,
-        default: 1,
-      },
-    },
-    // List-level access controls
-    access: {
-      read: access.userIsAdminOrOwner,
-      update: access.userIsAdminOrOwner,
-      create: access.userIsAdmin,
-      delete: access.userIsAdmin,
-      auth: true,
-    },
-    adminConfig: {
-      defaultColumns: "label, ordering",
-    },
-  })
+ 
   keystone.createList("User", {
     fields: {
       name: { type: Text },

@@ -12,26 +12,19 @@ module.exports = (app, model) => {
       // fetch data parallel
       const [
         block,
-        menu,
-        cards,
-        LoanServicePage,
-        MT
+        menu,        
+        mt
       ] = await Promise.all([
-        model('Block').find().sort({ ordering: 1 }).lean(),
+        model('ContentBlock').find().sort({ ordering: 1 }).lean(),
         model('Menu').find().sort({ ordering: 1 }).lean(),
-        model('Card').find().sort({ ordering: 1 }).lean(),
-        model('LoanServicePage').find().sort({ ordering: 1 }).lean(),
-        model('MT').find().sort({ ordering: 1 }).lean(),
+        model('mt').find().sort({ ordering: 1 }).lean(),
       ]);
 
       // normalization
       const classified = chain(block).groupBy('section').reduce((newClassifiedList, classifiedList, section) => {
         const list = chain(classifiedList).map(cl => pick(cl, [
           'title',
-          'description',
-          'metaTitle',
-          'metaDescription',
-          'metaKeywords',
+          'description',          
           'ordering',
         ])).sortBy(['ordering']).value();
         return {
@@ -40,12 +33,34 @@ module.exports = (app, model) => {
         }
       }, {}).value();
       // console.log(menu);
+
+      const classified_metadata = chain(mt).groupBy('section').reduce((newClassifiedList, classifiedList, section) => {
+        const list = chain(classifiedList).map(cl => pick(cl, [
+          'title',
+          'description',          
+          'ordering',
+        ])).sortBy(['ordering']).value();
+        return {
+          ...newClassifiedList,
+          [section]: !!inspector[section] ? inspector[section](list) : list,
+        }
+      }, {}).value();
+
+      const classified_menu = chain(menu).groupBy('section').reduce((newClassifiedList, classifiedList, section) => {
+        const list = chain(classifiedList).map(cl => pick(cl, [
+          'label',
+          'url',          
+          'ordering',
+        ])).sortBy(['ordering']).value();
+        return {
+          ...newClassifiedList,
+          [section]: !!inspector[section] ? inspector[section](list) : list,
+        }
+      }, {}).value();
+
       list = {
-        menu: chain(menu).map(m => pick(m, ['ordering', 'label'])).sortBy(['ordering']).value(),
-        richMore: chain(cards).map(c => pick(c, ['ordering', 'label', 'description'])).sortBy(['ordering']).value(),
-        LoanServicePage: chain(LoanServicePage).map(c => pick(c, ['ordering', 'label', 'description'])).sortBy(['ordering']).value(),
-        MT: chain(MT).map(c => pick(c, ['title', 'description', 'metaTitle','metaDescription','metaKeywords','ordering'])).sortBy(['ordering']).value(),
-        ...classified,
+        // menu: chain(menu).map(m => pick(m, ['ordering', 'label','url'])).sortBy(['ordering']).value(),        
+        ...classified_menu,...classified,...classified_metadata
       }
     } catch (err) {
       // ignore
