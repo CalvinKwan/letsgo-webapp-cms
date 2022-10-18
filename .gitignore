@@ -1,0 +1,41 @@
+.DS_Store
+jsConfigs.js
+
+# local env files
+.env
+.env.local
+.env.*.local
+
+# data folders
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+*dist
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.idea/workspace.xml
+node_modules/*
+!node_modules/@keystonejs
+node_modules/@keystonejs/*
+!node_modules/@keystonejs/app-admin-ui
+node_modules/@keystonejs/app-admin-ui/*
+!node_modules/@keystonejs/app-admin-ui/client
+node_modules/@keystonejs/app-admin-ui/client/*
+!node_modules/@keystonejs/app-admin-ui/client/components
+!node_modules/@keystonejs/app-admin-ui/client/pages
+
+jsConfigs0.js
+/dbbak
+
+medias/teams
+logs
