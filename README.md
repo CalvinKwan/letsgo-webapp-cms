@@ -1,6 +1,7 @@
-# RichMore Financial CMS
+# Let's GO CMS
 
 ## Usage
+
 ```javascript
 yarn install
 // local development
@@ -11,14 +12,18 @@ docker-compose up
 ```
 
 ## Production
+
 ```javascript
 yarn run build
 yarn start
 ```
 
 ## API Sample Output
-### Label內容
+
+### Label 內容
+
 **http://domain/api/v1/content**
+
 ```javascript
 {
    "menu":[       // 主目錄項目 （已排序）
@@ -142,28 +147,32 @@ yarn start
 ```
 
 ### 熱門文章
+
 **http://domain/api/v1/post**
+
 ```javascript
-[
-   {
-      "title":"自僱人士只需簡單收入證明",
-      "content":"作為咖啡店老闆的劉先。",
-      "_id":"621f871df08c5f10e958b94a",
-      "thumbnail":"http://localhost:3000/file/uploads/cms/621888.png",
-      "banner":"http://localhost:3000/file/uploads/cms/621f8.jpg"
-   },
-   {
-      "title":"自僱人士只需簡單收入證明",
-      "content":"作為咖啡店老闆的劉先。",
-      "_id":"621f871df08c5f10e958b94a",
-      "thumbnail":"http://localhost:3000/file/uploads/cms/621888.png",
-      "banner":"http://localhost:3000/file/uploads/cms/621f8.jpg"
-   }
+;[
+  {
+    title: "自僱人士只需簡單收入證明",
+    content: "作為咖啡店老闆的劉先。",
+    _id: "621f871df08c5f10e958b94a",
+    thumbnail: "http://localhost:3000/file/uploads/cms/621888.png",
+    banner: "http://localhost:3000/file/uploads/cms/621f8.jpg",
+  },
+  {
+    title: "自僱人士只需簡單收入證明",
+    content: "作為咖啡店老闆的劉先。",
+    _id: "621f871df08c5f10e958b94a",
+    thumbnail: "http://localhost:3000/file/uploads/cms/621888.png",
+    banner: "http://localhost:3000/file/uploads/cms/621f8.jpg",
+  },
 ]
 ```
 
 ### 提交估價
+
 POST **http://domain/api/v1/valuation**
+
 ```javascript
 {
     "name":"Terry Chan",
