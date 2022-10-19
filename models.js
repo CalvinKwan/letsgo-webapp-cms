@@ -206,7 +206,7 @@ module.exports = (keystone) => {
       },
     },
     adminConfig: {
-      defaultColumns: "label,description,ordering",
+      defaultColumns: "label,description,section,ordering",
     },
     // List-level access controls
     access: {
