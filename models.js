@@ -99,7 +99,7 @@ module.exports = (keystone) => {
 
   keystone.createList("ApplicationSubmission", {
     labelField: "Application Submission",
-    labelResolver: (i) => i.name,
+    labelResolver: (i) => i.fullName,
     fields: {
       loanTarget: { type: Text },
       phoneNumb: { type: Integer },
@@ -120,7 +120,7 @@ module.exports = (keystone) => {
     },
     adminConfig: {
       defaultColumns:
-        "fullName, phone, loanTarget,ammount, idCard, birthDate,sex,occupation,payMethod,income,timestamp",
+        "fullName, phoneNumb, loanTarget,ammount, idCard, birthDate,sex,occupation,payMethod,income,timestamp",
     },
     // List-level access controls
     access: {
