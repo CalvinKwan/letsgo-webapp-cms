@@ -10,14 +10,16 @@ module.exports = (app, model) => {
       const body = req.body
       console.log(req)
       const data = pick(body, [
-        "name",
-        "isChatBot",
-        "reason",
-        "paymethod",
-        "phone",
-        "loanAmount",
-        "paymentPeriod",
+        "loanTarget",
+        "phoneNumb",
+        "fullName",
         "idCard",
+        "birthDate",
+        "sex",
+        "ammount",
+        "occupation",
+        "payMethod",
+        "income",
         "timestamp",
       ])
       const applicationModel = model("ApplicationSubmission")

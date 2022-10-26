@@ -46,33 +46,30 @@ const beforeChangeFile = async ({ existingItem }) => {
   }
 }
 
-module.exports = (keystone) => { 
-
-
-  const section = [      
-    { value: "Features", label: "產品特點" },    
-    { value: "LoanProduct", label: "貸款產品" },    
-    { value: "AboutUs", label: "關於我們" },    
+module.exports = (keystone) => {
+  const section = [
+    { value: "Features", label: "產品特點" },
+    { value: "LoanProduct", label: "貸款產品" },
+    { value: "AboutUs", label: "關於我們" },
     { value: "CrediteRating", label: "信貸評級" },
-    { value: "QA", label: "常見問題" },    
-    { value: "Login", label: "登入" },    
-    { value: "Application", label: "立即申請" },    
-  ]
-
-  const pageList = [      
-    { value: "Menu", label: "首頁" },    
-    { value: "LoanProduct", label: "貸款產品" },    
-    { value: "CrediteRating", label: "信貸評級" },
-    { value: "AboutUs", label: "關於我們" },    
-    { value: "QA", label: "常見問題" },    
+    { value: "QA", label: "常見問題" },
     { value: "Login", label: "登入" },
     { value: "Application", label: "立即申請" },
   ]
 
-  const menuList = [      
-    { value: "main", label: "主要" },    
-    { value: "loanProduct", label: "貸款產品" },    
-    
+  const pageList = [
+    { value: "Menu", label: "首頁" },
+    { value: "LoanProduct", label: "貸款產品" },
+    { value: "CrediteRating", label: "信貸評級" },
+    { value: "AboutUs", label: "關於我們" },
+    { value: "QA", label: "常見問題" },
+    { value: "Login", label: "登入" },
+    { value: "Application", label: "立即申請" },
+  ]
+
+  const menuList = [
+    { value: "main", label: "主要" },
+    { value: "loanProduct", label: "貸款產品" },
   ]
 
   keystone.createList("Menu", {
@@ -80,8 +77,8 @@ module.exports = (keystone) => {
     labelResolver: (i) => i.label,
     fields: {
       label: { type: Text },
-      url:{type:Text},
-      section: { type: Select, options: menuList },                   
+      url: { type: Text },
+      section: { type: Select, options: menuList },
       ordering: {
         type: Integer,
         default: 1,
@@ -104,14 +101,16 @@ module.exports = (keystone) => {
     labelField: "Application Submission",
     labelResolver: (i) => i.name,
     fields: {
-      name: { type: Text },
-      isChatBot: { type: Checkbox },
-      reason: { type: Text },
-      paymethod: { type: Text },
-      phone: { type: Integer },
-      loanAmount: { type: Text },
-      paymentPeriod: { type: Integer },
+      loanTarget: { type: Text },
+      phoneNumb: { type: Integer },
+      fullName: { type: Text },
       idCard: { type: Text },
+      birthDate: { type: Text },
+      sex: { type: Text },
+      ammount: { type: Text },
+      occupation: { type: Text },
+      payMethod: { type: Text },
+      income: { type: Text },
       submissionDate: {
         type: CalendarDay,
         dateFrom: "2022-01-01",
@@ -121,7 +120,7 @@ module.exports = (keystone) => {
     },
     adminConfig: {
       defaultColumns:
-        "name,isChatBot, phone, loanAmount, paymentPeriod, idCard, timestamp",
+        "fullName, phone, loanTarget,ammount, idCard, birthDate,sex,occupation,payMethod,income,timestamp",
     },
     // List-level access controls
     access: {
@@ -171,8 +170,8 @@ module.exports = (keystone) => {
   keystone.createList("ValuationCalculaton", {
     labelField: "Valuation Calculaton",
     labelResolver: (i) => i.label,
-    fields: {      
-      label: { type: Text},                        
+    fields: {
+      label: { type: Text },
       ordering: {
         type: Integer,
         default: 1,
@@ -191,15 +190,13 @@ module.exports = (keystone) => {
     },
   })
 
- 
-
   keystone.createList("ContentBlock", {
     labelField: "Content Block",
     labelResolver: (i) => i.label,
-    fields: {      
-      label: { type: Text},
-      description: { type: Text, isMultiline: true },     
-      section: { type: Select, options: section },                   
+    fields: {
+      label: { type: Text },
+      description: { type: Text, isMultiline: true },
+      section: { type: Select, options: section },
       ordering: {
         type: Integer,
         default: 1,
@@ -222,12 +219,12 @@ module.exports = (keystone) => {
     labelField: "Meta Data",
     labelResolver: (i) => i.title,
     fields: {
-      label: { type: Text  },
+      label: { type: Text },
       description: { type: Text, isMultiline: true },
-      metaTitle: { type: Text, isMultiline: true  },
-      metaDescription: { type: Text, isMultiline: true  },
-      metaKeywords: { type: Text, isMultiline: true  },
-      section: { type: Select, options: pageList },                   
+      metaTitle: { type: Text, isMultiline: true },
+      metaDescription: { type: Text, isMultiline: true },
+      metaKeywords: { type: Text, isMultiline: true },
+      section: { type: Select, options: pageList },
       ordering: {
         type: Integer,
         default: 1,
@@ -245,7 +242,6 @@ module.exports = (keystone) => {
       defaultColumns: "label, description, ordering",
     },
   })
-
 
   keystone.createList("Post", {
     labelResolver: (i) => i.title,
@@ -307,7 +303,7 @@ module.exports = (keystone) => {
       defaultColumns: "key, remark, value",
     },
   })
- 
+
   keystone.createList("User", {
     fields: {
       name: { type: Text },
