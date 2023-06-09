@@ -1,4 +1,4 @@
-const DB_NAME = "letsgocms"
+const DB_NAME = "letsgocms";
 
 // basic application setting
 const setting = {
@@ -12,7 +12,7 @@ const setting = {
   port: process.env.PORT || 3000,
   adapter: {
     // mongoUri: process.env.MONGO_URL || `mongodb://localhost/${DB_NAME}`,
-    mongoUri:      
+    mongoUri:
       "mongodb+srv://letsgoadmin:Letsgo2022@cluster0.9x6bdu6.mongodb.net/letsgocms?retryWrites=true&w=majority",
   },
   staticPath: "/file",
@@ -23,55 +23,55 @@ const setting = {
       path: "/file/uploads/cms",
     },
   },
-}
+};
 
 const developmentSetting = {
   ...setting,
   env: "development",
-  domain: "http://35.221.197.174/",
-}
+  domain: "http://35.234.7.177/",
+};
 
 const betaSetting = {
   ...setting,
   env: "beta",
   dev: false,
-  domain: "http://35.221.197.174/",
-}
+  domain: "http://35.234.7.177/",
+};
 
 const uatSetting = {
   ...setting,
   env: "uat",
   dev: false,
-  domain: "http://35.221.197.174/",
-}
+  domain: "http://35.234.7.177/",
+};
 
 const productionSetting = {
   ...setting,
   env: "production",
   dev: false,
-  domain: "http://35.221.197.174/",
+  domain: "http://35.234.7.177/",
   // domain: "https://backend.rmloan.com.hk/",
-}
+};
 
-let config
+let config;
 const {
   env: { NODE_ENV },
-} = process
+} = process;
 switch (NODE_ENV) {
   case "development":
-    config = developmentSetting
-    break
+    config = developmentSetting;
+    break;
   case "beta":
-    config = betaSetting
-    break
+    config = betaSetting;
+    break;
   case "production":
-    config = productionSetting
-    break
+    config = productionSetting;
+    break;
   case "uat":
-    config = uatSetting
-    break
+    config = uatSetting;
+    break;
   default:
-    config = setting
+    config = setting;
 }
 
-module.exports = config
+module.exports = config;
