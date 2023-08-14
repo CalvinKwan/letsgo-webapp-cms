@@ -1,4 +1,4 @@
-const DB_NAME = "letsgocms";
+const DB_NAME = "letsgocms"
 
 // basic application setting
 const setting = {
@@ -23,27 +23,27 @@ const setting = {
       path: "/file/uploads/cms",
     },
   },
-};
+}
 
 const developmentSetting = {
   ...setting,
   env: "development",
   domain: "http://35.234.7.177/",
-};
+}
 
 const betaSetting = {
   ...setting,
   env: "beta",
   dev: false,
   domain: "http://35.234.7.177/",
-};
+}
 
 const uatSetting = {
   ...setting,
   env: "uat",
   dev: false,
   domain: "http://35.234.7.177/",
-};
+}
 
 const productionSetting = {
   ...setting,
@@ -51,27 +51,27 @@ const productionSetting = {
   dev: false,
   domain: "http://35.234.7.177/",
   // domain: "https://backend.rmloan.com.hk/",
-};
-
-let config;
-const {
-  env: { NODE_ENV },
-} = process;
-switch (NODE_ENV) {
-  case "development":
-    config = developmentSetting;
-    break;
-  case "beta":
-    config = betaSetting;
-    break;
-  case "production":
-    config = productionSetting;
-    break;
-  case "uat":
-    config = uatSetting;
-    break;
-  default:
-    config = setting;
 }
 
-module.exports = config;
+let config
+const {
+  env: { NODE_ENV },
+} = process
+switch (NODE_ENV) {
+  case "development":
+    config = developmentSetting
+    break
+  case "beta":
+    config = betaSetting
+    break
+  case "production":
+    config = productionSetting
+    break
+  case "uat":
+    config = uatSetting
+    break
+  default:
+    config = setting
+}
+
+module.exports = config

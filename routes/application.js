@@ -10,7 +10,21 @@ module.exports = (app, model) => {
       const body = req.body
       console.log(req)
       const data = pick(body, [
+        "companyAddress",
+        "companyName",
+        "companyPhone",
+        "employment",
+        "industry",
+        "liveAddress",
+        "liveBlock",
+        "liveFloor",
+        "liveMethod",
+        "liveRegion",
+        "liveUnit",
         "loanTarget",
+        "nationality",
+        "paymentTerms",
+        "position",
         "phoneNumb",
         "fullName",
         "idCard",
@@ -20,6 +34,7 @@ module.exports = (app, model) => {
         "occupation",
         "payMethod",
         "income",
+        "submissionDate",
         "timestamp",
       ])
       const applicationModel = model("ApplicationSubmission")
