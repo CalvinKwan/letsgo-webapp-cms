@@ -24,10 +24,11 @@ pnpm-debug.log*
 *.sln
 *.sw?
 .idea/workspace.xml
-node_modules/*
-!node_modules/@keystonejs
-node_modules/@keystonejs/*
-!node_modules/@keystonejs/app-admin-ui
+node_modules
+# node_modules/*
+# !node_modules/@keystonejs
+# node_modules/@keystonejs/*
+# !node_modules/@keystonejs/app-admin-ui
 
 jsConfigs0.js
 /dbbak
