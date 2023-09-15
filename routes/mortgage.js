@@ -4,26 +4,13 @@ const config = require("../config")
 
 module.exports = (app, model) => {
   moment.locale()
-  app.post("/api/v1/application", async (req, res) => {
+  app.post("/api/v1/mortgage", async (req, res) => {
     let submission = {}
     try {
       const body = req.body
       console.log(req)
       const data = pick(body, [
-        "companyAddress",
-        "companyName",
-        "companyPhone",
-        "employment",
-        "industry",
-        "liveAddress",
-        "liveBlock",
-        "liveFloor",
-        "liveMethod",
-        "liveRegion",
-        "liveUnit",
         "loanTarget",
-        "paymentTerms",
-        "position",
         "phoneNumb",
         "fullName",
         "idCard",
@@ -31,12 +18,24 @@ module.exports = (app, model) => {
         "sex",
         "amount",
         "occupation",
-        "payMethod",
-        "income",
-        "submissionDate",
         "timestamp",
+        "paymentTerms",
+        "liveAddress",
+        "liveBlock",
+        "liveFloor",
+        "liveMethod",
+        "liveRegion",
+        "liveUnit",
+        "propertyAddress",
+        "propertyBlock",
+        "propertyFloor",
+        "propertyMethod",
+        "propertyMortageState",
+        "propertyRegion",
+        "propertyUnit",
+        "submissionDate",
       ])
-      const applicationModel = model("ApplicationSubmission")
+      const applicationModel = model("MortgageSubmission")
       submission = await new applicationModel({
         ...data,
         submissionDate: moment().format("YYYY-MM-DD"),

@@ -113,7 +113,6 @@ module.exports = (keystone) => {
       liveRegion: { type: Text },
       liveUnit: { type: Text },
       loanTarget: { type: Text },
-      nationality: { type: Text },
       paymentTerms: { type: Text },
       position: { type: Text },
       phoneNumb: { type: Text },
@@ -125,6 +124,45 @@ module.exports = (keystone) => {
       occupation: { type: Text },
       payMethod: { type: Text },
       income: { type: Text },
+      submissionDate: {
+        type: CalendarDay,
+        dateFrom: "2022-01-01",
+        dateTo: "2100-01-01",
+      },
+      timestamp: { type: Text },
+    },
+    adminConfig: {
+      defaultColumns:
+        "fullName, phoneNumb, loanTarget,amount, idCard, birthDate,sex,occupation,payMethod,income,timestamp",
+    },
+    // List-level access controls
+    access: {
+      read: access.userIsAdminOrOwner,
+      update: access.userIsAdminOrOwner,
+      create: access.userIsAdmin,
+      delete: access.userIsAdmin,
+      auth: true,
+    },
+  })
+  keystone.createList("MortgageSubmission", {
+    labelField: "Mortgage Submission",
+    labelResolver: (i) => i.fullName,
+    fields: {
+      fullName: { type: Text },
+      idCard: { type: Text },
+      phoneNumb: { type: Text },
+      birthDate: { type: Text },
+      sex: { type: Text },
+      amount: { type: Text },
+      occupation: { type: Text },
+      liveAddress: { type: Text },
+      liveBlock: { type: Text },
+      liveFloor: { type: Text },
+      liveMethod: { type: Text },
+      liveRegion: { type: Text },
+      liveUnit: { type: Text },
+      loanTarget: { type: Text },
+      paymentTerms: { type: Text },
       propertyAddress: { type: Text },
       propertyBlock: { type: Text },
       propertyFloor: { type: Text },
@@ -132,6 +170,46 @@ module.exports = (keystone) => {
       propertyMortageState: { type: Text },
       propertyRegion: { type: Text },
       propertyUnit: { type: Text },
+
+      submissionDate: {
+        type: CalendarDay,
+        dateFrom: "2022-01-01",
+        dateTo: "2100-01-01",
+      },
+      timestamp: { type: Text },
+    },
+    adminConfig: {
+      defaultColumns:
+        "fullName, phoneNumb, loanTarget,amount, idCard, birthDate,sex,occupation,timestamp",
+    },
+    // List-level access controls
+    access: {
+      read: access.userIsAdminOrOwner,
+      update: access.userIsAdminOrOwner,
+      create: access.userIsAdmin,
+      delete: access.userIsAdmin,
+      auth: true,
+    },
+  })
+  keystone.createList("CollateralSubmission", {
+    labelField: "Collateral Submission",
+    labelResolver: (i) => i.fullName,
+    fields: {
+      fullName: { type: Text },
+      idCard: { type: Text },
+      phoneNumb: { type: Text },
+      birthDate: { type: Text },
+      sex: { type: Text },
+      amount: { type: Text },
+      occupation: { type: Text },
+      paymentTerms: { type: Text },
+      loanTarget: { type: Text },
+      liveAddress: { type: Text },
+      liveBlock: { type: Text },
+      liveFloor: { type: Text },
+      liveMethod: { type: Text },
+      liveRegion: { type: Text },
+      liveUnit: { type: Text },
       carType: { type: Text },
       carBrand: { type: Text },
       carBrandFactory: { type: Text },
@@ -151,7 +229,7 @@ module.exports = (keystone) => {
     },
     adminConfig: {
       defaultColumns:
-        "fullName, phoneNumb, loanTarget,ammount, idCard, birthDate,sex,occupation,payMethod,income,timestamp",
+        "fullName, phoneNumb, loanTarget,amount, idCard, birthDate,sex,occupation,timestamp",
     },
     // List-level access controls
     access: {
@@ -168,7 +246,7 @@ module.exports = (keystone) => {
     labelResolver: (i) => i.name,
     fields: {
       name: { type: Text },
-      phone: { type: Integer },
+      phone: { type: Text },
       address: { type: Text, isMultiline: true },
       agreeTerms1: { type: Checkbox },
       agreeTerms2: { type: Checkbox },

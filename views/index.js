@@ -1,27 +1,28 @@
-import React from "react";
-import Logo from "./components/logo";
+import React from "react"
+import Logo from "./components/logo"
 
 export default {
   logo: () => <Logo />,
-  pages: () => [    
+  pages: () => [
     {
       label: "Label Management",
       children: [
         { listKey: "ContentBlock", label: "Content Block" },
-        { listKey: "Menu", label: "Main Menu" },        
+        { listKey: "Menu", label: "Main Menu" },
         { listKey: "mt", label: "Meta Data" },
       ],
     },
     {
       label: "Content Management",
-      children: [
-        { listKey: "Post", label: "Post" },        
-      ],
-    },{
+      children: [{ listKey: "Post", label: "Post" }],
+    },
+    {
       label: "Submission",
-      children: [        
+      children: [
         { listKey: "ValuationSubmission", label: "Valuation Submission" },
-        { listKey: "ApplicationSubmission", label: "Application Submission" },        
+        { listKey: "ApplicationSubmission", label: "Application Submission" },
+        { listKey: "MortgageSubmission", label: "Mortgage Submission" },
+        { listKey: "CollateralSubmission", label: "Collateral Submission" },
       ],
     },
     {
@@ -29,4 +30,4 @@ export default {
       children: [{ listKey: "User", label: "System User" }],
     },
   ],
-};
+}
