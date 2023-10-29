@@ -24,7 +24,7 @@ pnpm-debug.log*
 *.sln
 *.sw?
 .idea/workspace.xml
-node_modules
+/node_modules/
 # node_modules/*
 # !node_modules/@keystonejs
 # node_modules/@keystonejs/*
@@ -35,3 +35,4 @@ jsConfigs0.js
 
 medias/teams
 logs
+node_modules
