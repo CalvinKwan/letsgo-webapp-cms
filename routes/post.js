@@ -23,6 +23,7 @@ module.exports = (app, model) => {
           return {
             ...pick(t, [
               "title",
+              "category",
               "content",
               "_id",
               "publishDate",

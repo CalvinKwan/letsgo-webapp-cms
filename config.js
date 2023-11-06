@@ -28,7 +28,7 @@ const setting = {
 const developmentSetting = {
   ...setting,
   env: "development",
-  domain: "http://35.234.7.177/",
+  domain: "http://localhost:3000",
 }
 
 const betaSetting = {
@@ -49,7 +49,7 @@ const productionSetting = {
   ...setting,
   env: "production",
   dev: false,
-  domain: "http://35.234.7.177/",
+  domain: "https://cms.letsgocredit.com.hk",
   // domain: "https://backend.rmloan.com.hk/",
 }
 

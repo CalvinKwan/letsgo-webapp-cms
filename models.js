@@ -72,6 +72,17 @@ module.exports = (keystone) => {
     { value: "loanProduct", label: "貸款產品" },
   ]
 
+  const postCatgetoriesList = [
+    { value: "loanInfo", label: "貸款資訊" },
+    { value: "loanTips", label: "投資貼士" },
+    { value: "manage", label: "理財百科" },
+  ]
+  const bannerLocationList = [
+    { value: "home", label: "首頁Banner" },
+    { value: "homePromote", label: "最新動態及推廣" },
+    { value: "blog", label: "信貸全攻略Banner" },
+  ]
+
   keystone.createList("Menu", {
     labelField: "Main Menu",
     labelResolver: (i) => i.label,
@@ -356,6 +367,7 @@ module.exports = (keystone) => {
     labelResolver: (i) => i.title,
     fields: {
       title: { type: Text },
+      category: { type: Select, options: postCatgetoriesList },
       content: { type: Text, isMultiline: true },
       thumbnail: {
         type: File,
@@ -392,6 +404,41 @@ module.exports = (keystone) => {
     },
     adminConfig: {
       defaultColumns: "title, timestamp, ordering",
+    },
+  })
+  keystone.createList("Banner", {
+    labelResolver: (i) => i.title,
+    fields: {
+      title: { type: Text },
+      location: { type: Select, options: bannerLocationList },
+      banner: {
+        type: File,
+        adapter: fileAdapter,
+        hooks: {
+          beforeChange: beforeChangeFile,
+        },
+      },
+      publishDate: {
+        type: CalendarDay,
+        dateFrom: "2022-01-01",
+        dateTo: "2100-01-01",
+      },
+      timestamp: { type: Text },
+      ordering: {
+        type: Integer,
+        default: 1,
+      },
+    },
+    // List-level access controls
+    access: {
+      read: access.userIsAdminOrOwner,
+      update: access.userIsAdminOrOwner,
+      create: access.userIsAdmin,
+      delete: access.userIsAdmin,
+      auth: true,
+    },
+    adminConfig: {
+      defaultColumns: "title, Location, timestamp, ordering",
     },
   })
   keystone.createList("SystemSetting", {

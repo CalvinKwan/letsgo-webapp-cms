@@ -14,7 +14,10 @@ export default {
     },
     {
       label: "Content Management",
-      children: [{ listKey: "Post", label: "Post" }],
+      children: [
+        { listKey: "Post", label: "Post" },
+        { listKey: "Banner", label: "Banner" },
+      ],
     },
     {
       label: "Submission",

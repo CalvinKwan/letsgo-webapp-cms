@@ -5,6 +5,7 @@ const express = require("express")
 const config = require("./../config")
 
 const PostRoutes = require("./post")
+const BannerRoutes = require("./banner")
 const ContentRoutes = require("./content")
 const VoluationRoutes = require("./valuation")
 const ApplicationRoutes = require("./application")
@@ -26,6 +27,7 @@ module.exports = (keystone, app) => {
   const model = (listKey) => keystone.lists[listKey].adapter.model
 
   PostRoutes(app, model)
+  BannerRoutes(app, model)
   ApplicationRoutes(app, model)
   VoluationRoutes(app, model)
   MortgageRoutes(app, model)
