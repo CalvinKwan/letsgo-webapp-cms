@@ -34,9 +34,9 @@ module.exports = (app, model) => {
       }, {}).value();
       // console.log(menu);
 
-      const classified_metadata = chain(mt).groupBy('section').reduce((newClassifiedList, classifiedList, section) => {
+      const classified_metadata = chain(mt).groupBy('label').reduce((newClassifiedList, classifiedList, section) => {
         const list = chain(classifiedList).map(cl => pick(cl, [
-          'title',
+          'label',
           'description',          
           'ordering',
         ])).sortBy(['ordering']).value();
