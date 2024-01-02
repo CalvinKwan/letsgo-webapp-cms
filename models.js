@@ -337,7 +337,7 @@ module.exports = (keystone) => {
 
   keystone.createList("mt", {
     labelField: "Meta Data",
-    labelResolver: (i) => i.title,
+    labelResolver: (i) => i.label,
     fields: {
       label: { type: Text },
       description: { type: Text, isMultiline: true },
