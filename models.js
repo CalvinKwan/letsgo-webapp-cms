@@ -411,6 +411,7 @@ module.exports = (keystone) => {
     fields: {
       title: { type: Text },
       location: { type: Select, options: bannerLocationList },
+      linkto: { type: Text },
       banner: {
         type: File,
         adapter: fileAdapter,
