@@ -18,6 +18,7 @@ module.exports = (app, model) => {
           return {
             ...pick(t, [
               "title",
+              "linkto",
               "location",
               "_id",
               "publishDate",
