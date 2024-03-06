@@ -51,7 +51,7 @@ module.exports = (keystone) => {
     { value: "Features", label: "產品特點" },
     { value: "LoanProduct", label: "貸款產品" },
     { value: "AboutUs", label: "關於我們" },
-    { value: "CrediteRating", label: "信貸評級" },
+    { value: "CrediteRating", label: "信貸全攻略" },
     { value: "QA", label: "常見問題" },
     { value: "Login", label: "登入" },
     { value: "Application", label: "立即申請" },
@@ -59,12 +59,17 @@ module.exports = (keystone) => {
 
   const pageList = [
     { value: "Menu", label: "首頁" },
-    { value: "LoanProduct", label: "貸款產品" },
-    { value: "CrediteRating", label: "信貸評級" },
+    { value: "privateloan", label: "私人貸款" },
+    { value: "tu", label: "免TU貸款" },
+    { value: "collateralLoan", label: "抵押品貸款" },
+    { value: "mortgage", label: "物業按揭或業主貸款" },    
+    { value: "creditcard", label: "結餘整合" },
+    { value: "CrediteRating", label: "信貸全攻略" },
     { value: "AboutUs", label: "關於我們" },
     { value: "QA", label: "常見問題" },
     { value: "Login", label: "登入" },
     { value: "Application", label: "立即申請" },
+    { value: "thankyou", label: "Thank you Page" },
   ]
 
   const menuList = [
